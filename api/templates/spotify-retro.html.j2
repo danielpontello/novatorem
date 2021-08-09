@@ -224,11 +224,7 @@
                 }
 
                 .currentStatus {
-                    float: left;
-                    font-size: 8px;
-                    position: static;
-                    margin-top: -5px;
-                    margin-left: 10px;
+                   font-size: 5px;
                 }
                 
                 .container {
@@ -243,23 +239,21 @@
 
                 .content {
                     width: 71%;
-                    margin-top: -3px;
+                    margin-top: 2.4px;
                     margin-left: 2px;
                 }
 
                 .song {
-                    color: #f7f7f7;
+                    color: #3a4b46;
                     overflow:hidden;
                     font-size: 10px;
-                    margin-top: 3px;
                     white-space:nowrap;
                     text-overflow:ellipsis;
                 }
 
                 .artist {
-                    color: #9f9f9f;
+                    color: #5a756c;
                     font-size: 8px;
-                    margin-top: 4px;
                     margin-bottom: 5px;
                 }
 
@@ -269,7 +263,7 @@
                 }
                 
                 div {
-                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+                    font-family: Cascadia Mono, Consolas, monospaced;
                 }
                 
                 @keyframes sound {
@@ -287,7 +281,6 @@
                 {{barCSS|safe}}
             </style>
 
-            <!-- <div class="currentStatus">{{status}}</div> -->
 
             <div class="main">
                 <a class="art" href="{}" target="_blank">
@@ -297,6 +290,7 @@
                 </a>
 
                 <div class="content">
+                    <div class="currentStatus">{{status}}</div>
                     <div class="song">{{songName}}</div>
                     <div class="artist">{{artistName}}</div>
                 </div>
