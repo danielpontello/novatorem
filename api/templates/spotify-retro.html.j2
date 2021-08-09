@@ -225,67 +225,47 @@
 
                 .currentStatus {
                     float: left;
-                    font-size: 24px;
+                    font-size: 8px;
                     position: static;
                     margin-top: -5px;
                     margin-left: 10px;
                 }
                 
                 .container {
-                    border-radius: 5px;
-                    padding: 10px 10px 10px 0px;
-                    background-color:#181414;
+                    
                 }
 
                 .art {
                     width: 27%;
                     float: left;
-                    margin-left: -5px;
+                    margin-top: 1px;
                 }
 
                 .content {
                     width: 71%;
+                    margin-top: -3px;
+                    margin-left: 2px;
                 }
 
                 .song {
                     color: #f7f7f7;
                     overflow:hidden;
+                    font-size: 10px;
                     margin-top: 3px;
-                    font-size: 24px;
-                    text-align: center;
                     white-space:nowrap;
                     text-overflow:ellipsis;
                 }
 
                 .artist {
                     color: #9f9f9f;
-                    font-size: 20px;
+                    font-size: 8px;
                     margin-top: 4px;
-                    text-align: center;
                     margin-bottom: 5px;
                 }
 
                 .cover {
-                    width: 100px;
-                    height: 100px;
-                    border-radius: 5px;
-                }
-
-                #bars {
-                    width: 40px;
+                    width: 30px;
                     height: 30px;
-                    bottom: 23px;
-                    position: absolute;
-                    margin: -20px 0 0 0px;
-                }
-
-                .bar {
-                    width: 3px;
-                    bottom: 1px;
-                    height: 3px;
-                    position: absolute;
-                    background: #1DB954cc;
-                    animation: sound 0ms -800ms linear infinite alternate;
                 }
                 
                 div {
@@ -319,7 +299,6 @@
                 <div class="content">
                     <div class="song">{{songName}}</div>
                     <div class="artist">{{artistName}}</div>
-                    <div id="bars">{{contentBar|safe}}</div>
                 </div>
             </div>
         </div>
