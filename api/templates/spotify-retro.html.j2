@@ -309,7 +309,7 @@
        <xhtml:div class="list">
 
         {% for song in recent_songs %}
-         </xhtml:div>
+         <xhtml:div>
             <xhtml:div class="trackName">{{ song[0] }}</xhtml:div>
             <xhtml:div class="trackArtist">{{ song[1] }}</xhtml:div>
          </xhtml:div>
@@ -317,7 +317,8 @@
 
      </xhtml:div>
    </xhtml:div>
- </foreignObject>
+ </xhtml:div>
+</foreignObject>
   <foreignObject
      id="SpotifyFrame"
      width="119.0625"
