@@ -146,6 +146,8 @@ def makeSVG(data):
         "image": image,
         "status": currentStatus,
         "duration": duration_string,
+        "duration_ms": duration_ms,
+        "progress_ms": progress_ms,
         "percentage": percentage,
         "animation_time": animationTime
     }
