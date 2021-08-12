@@ -23,7 +23,7 @@ FALLBACK_THEME = "spotify.html.j2"
 REFRESH_TOKEN_URL = "https://accounts.spotify.com/api/token"
 NOW_PLAYING_URL = "https://api.spotify.com/v1/me/player/currently-playing"
 RECENTLY_PLAYING_URL = (
-    "https://api.spotify.com/v1/me/player/recently-played?limit=10"
+    "https://api.spotify.com/v1/me/player/recently-played?limit=5"
 )
 
 app = Flask(__name__)
@@ -112,11 +112,12 @@ def makeSVG(data):
     contentBar = "".join(["<div class='bar'></div>" for i in range(barCount)])
     barCSS = barGen(barCount)
     now_playing = False
+    recentPlays = recentlyPlayed()
+    recentList = []
 
     if data == {} or data["item"] == "None" or data["item"] is None:
         # contentBar = "" #Shows/Hides the EQ bar if no song is currently playing
         currentStatus = "Paused"
-        recentPlays = recentlyPlayed()
         recentPlaysLength = len(recentPlays["items"])
         itemIndex = random.randint(0, recentPlaysLength - 1)
         item = recentPlays["items"][itemIndex]["track"]
@@ -144,6 +145,14 @@ def makeSVG(data):
     percentage = "{:.2f}%".format((progress_ms/duration_ms)*100)
     animationTime = f"{(duration_ms-progress_ms)/1000}s"
 
+    for item in recentPlays['items']:
+        track = item['track']
+        name = track['name']
+        album = track['album']['name']
+        image = track['album']['images'][2]['url']
+
+        recentList.append((name, album, image))
+
     dataDict = {
         "contentBar": contentBar,
         "barCSS": barCSS,
@@ -156,7 +165,8 @@ def makeSVG(data):
         "progress_ms": progress_ms,
         "percentage": percentage,
         "animation_time": animationTime,
-        "now_playing": now_playing
+        "now_playing": now_playing,
+        "recent_songs": recentList
     }
 
     return render_template(getTemplate(), **dataDict)
