@@ -325,7 +325,7 @@
                 .content {
                     width: 71%;
                     margin-top: 2.4px;
-                    margin-left: 2px;
+                    margin-left: 4px;
                 }
 
                 .song {
@@ -334,19 +334,56 @@
                     font-size: 6px;
                     white-space:nowrap;
                     text-overflow:ellipsis;
-                    margin-top:5.5px;
+                    margin-top:3.5px;
                 }
 
                 .artist {
                     color: #5a756c;
                     font-size: 4px;
-                    margin-bottom: 5px;
                 }
 
                 .cover {
-                    width: 30px;
-                    height: 30px;
+                    width: 31px;
+                    height: 31px;
+                    box-shadow: 1px 1px 0px 0px #000000CC;
                 }
+
+                .timeDiv {
+                   width: 68px;
+                   margin-top: 5px;
+                   font-size: 3px;
+                   position: relative;
+                   font-family: 
+                }
+
+                .endTime {
+                   position: absolute;
+                   top: 0;
+                   right: 0;
+                }
+
+                .progressBar {
+                   width: 68px;
+                   height: 3px;
+                   background: red;
+                   position: relative;
+                   background-color: #AAAAAA;
+                   box-shadow: .5px .5px 0px 0px #000000CC;
+                }
+
+                .fill {
+                   position: absolute;
+                   top: 0;
+                   left: 0;
+                   background: #000000;
+                   width: 50%;
+                   height: 3px;
+                   animation-name: bar;
+                   animation-duration: {{animation_time}};
+                   animation-timing-function: linear;
+                   animation-fill-mode: forwards;
+                }
+
                 
                 div {
                     font-family: Cascadia Mono, Consolas, monospaced;
@@ -362,6 +399,16 @@
                         height: 15px;
                         opacity: 0.95;
                     }
+                }
+
+                @keyframes bar {
+                   0% {
+                     width: {{percentage}};
+                   }
+
+                   100% {
+                     width: 100%;
+                   }
                 }
 
                 {{barCSS|safe}}
@@ -386,6 +433,20 @@
              class="song">{{songName}}</xhtml:div>
           <xhtml:div
              class="artist">{{artistName}}</xhtml:div>
+
+         <xhtml:div
+               class="timeDiv">
+            <xhtml:div
+               class="startTime">0:00</xhtml:div>
+            <xhtml:div
+               class="endTime">{{duration}}</xhtml:div>
+         </xhtml:div>
+
+         <xhtml:div
+               class="progressBar">
+            <xhtml:div
+               class="fill"></xhtml:div>
+         </xhtml:div>
         </xhtml:div>
       </xhtml:div>
     </xhtml:div>

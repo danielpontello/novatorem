@@ -6,6 +6,7 @@ import requests
 from base64 import b64encode
 from dotenv import load_dotenv, find_dotenv
 from flask import Flask, Response, jsonify, render_template, templating
+from datetime import timedelta
 
 load_dotenv(find_dotenv())
 
@@ -98,6 +99,13 @@ def loadImageB64(url):
     resposne = requests.get(url)
     return b64encode(resposne.content).decode("ascii")
 
+def ms_to_string(millis):
+    td = str(timedelta(milliseconds=int(millis)))
+
+    minutes = td.split(":")[1]
+    seconds = td.split(":")[2].split(".")[0]
+
+    return minutes + ":" + seconds
 
 def makeSVG(data):
     barCount = 84
@@ -106,14 +114,14 @@ def makeSVG(data):
 
     if data == {} or data["item"] == "None" or data["item"] is None:
         # contentBar = "" #Shows/Hides the EQ bar if no song is currently playing
-        currentStatus = "Was playing:"
+        currentStatus = "Paused"
         recentPlays = recentlyPlayed()
         recentPlaysLength = len(recentPlays["items"])
         itemIndex = random.randint(0, recentPlaysLength - 1)
         item = recentPlays["items"][itemIndex]["track"]
     else:
         item = data["item"]
-        currentStatus = "Now listening to:"
+        currentStatus = "Now playing"
     
     if item["album"]["images"] == []:
         image = PLACEHOLDER_IMAGE
@@ -123,6 +131,13 @@ def makeSVG(data):
     artistName = item["artists"][0]["name"].replace("&", "&amp;")
     songName = item["name"].replace("&", "&amp;")
 
+    duration_ms = item["duration_ms"]
+    progress_ms = item["progress_ms"]
+
+    duration_string = ms_to_string(duration_ms)
+    percentage = "{:.2f}%".format((duration_ms/progress_ms)*100)
+    animationTime = f"{(duration_ms-progress_ms)/1000}s"
+
     dataDict = {
         "contentBar": contentBar,
         "barCSS": barCSS,
@@ -130,6 +145,9 @@ def makeSVG(data):
         "songName": songName,
         "image": image,
         "status": currentStatus,
+        "duration": duration_string,
+        "percentage": percentage,
+        "animation_time": animationTime
     }
 
     return render_template(getTemplate(), **dataDict)
