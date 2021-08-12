@@ -132,7 +132,7 @@ def makeSVG(data):
     songName = item["name"].replace("&", "&amp;")
 
     duration_ms = item["duration_ms"]
-    progress_ms = item["progress_ms"]
+    progress_ms = data["progress_ms"]
 
     duration_string = ms_to_string(duration_ms)
     percentage = "{:.2f}%".format((duration_ms/progress_ms)*100)
