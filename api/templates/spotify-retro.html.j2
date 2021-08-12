@@ -442,7 +442,9 @@
             </xhtml:div>
 
             <xhtml:div class="progressBar">
-               <xhtml:div class="fill"></xhtml:div>
+               {% if now_playing %}
+                  <xhtml:div class="fill"></xhtml:div>
+               {% endif %}
             </xhtml:div>
          </xhtml:div>
          

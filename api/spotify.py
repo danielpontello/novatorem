@@ -124,8 +124,10 @@ def makeSVG(data):
         progress_ms = 0
     else:
         item = data["item"]
-        now_playing = data["is_playing"]
         currentStatus = "Now playing"
+        now_playing = data["is_playing"]
+        if not now_playing:
+            currentStatus = "Paused"
         progress_ms = data["progress_ms"]
     
     if item["album"]["images"] == []:
