@@ -111,7 +111,7 @@ def makeSVG(data):
     barCount = 84
     contentBar = "".join(["<div class='bar'></div>" for i in range(barCount)])
     barCSS = barGen(barCount)
-    now_playing = True
+    now_playing = False
 
     if data == {} or data["item"] == "None" or data["item"] is None:
         # contentBar = "" #Shows/Hides the EQ bar if no song is currently playing
@@ -121,9 +121,12 @@ def makeSVG(data):
         itemIndex = random.randint(0, recentPlaysLength - 1)
         item = recentPlays["items"][itemIndex]["track"]
         now_playing = False
+        progress_ms = 0
     else:
         item = data["item"]
+        now_playing = data["is_playing"]
         currentStatus = "Now playing"
+        progress_ms = data["progress_ms"]
     
     if item["album"]["images"] == []:
         image = PLACEHOLDER_IMAGE
@@ -134,7 +137,6 @@ def makeSVG(data):
     songName = item["name"].replace("&", "&amp;")
 
     duration_ms = item["duration_ms"]
-    progress_ms = data["progress_ms"]
 
     duration_string = ms_to_string(duration_ms)
     percentage = "{:.2f}%".format((progress_ms/duration_ms)*100)
