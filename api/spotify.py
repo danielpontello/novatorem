@@ -149,7 +149,6 @@ def makeSVG(data):
         track = item['track']
         name = track['name']
         album = track['album']['name']
-        image = track['album']['images'][2]['url']
 
         recentList.append((name, album, image))
 
