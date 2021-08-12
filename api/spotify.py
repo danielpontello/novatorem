@@ -150,6 +150,8 @@ def makeSVG(data):
         "animation_time": animationTime
     }
 
+    print(dataDict)
+
     return render_template(getTemplate(), **dataDict)
 
 
