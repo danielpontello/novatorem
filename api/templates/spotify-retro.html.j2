@@ -378,10 +378,12 @@
                    background: #000000;
                    width: 50%;
                    height: 3px;
+                   {% if now_playing %}
                    animation-name: bar;
                    animation-duration: {{animation_time}};
                    animation-timing-function: linear;
                    animation-fill-mode: forwards;
+                   {% endif %}
                 }
 
                 

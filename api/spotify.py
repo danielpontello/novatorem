@@ -111,6 +111,7 @@ def makeSVG(data):
     barCount = 84
     contentBar = "".join(["<div class='bar'></div>" for i in range(barCount)])
     barCSS = barGen(barCount)
+    now_playing = True
 
     if data == {} or data["item"] == "None" or data["item"] is None:
         # contentBar = "" #Shows/Hides the EQ bar if no song is currently playing
@@ -119,6 +120,7 @@ def makeSVG(data):
         recentPlaysLength = len(recentPlays["items"])
         itemIndex = random.randint(0, recentPlaysLength - 1)
         item = recentPlays["items"][itemIndex]["track"]
+        now_playing = False
     else:
         item = data["item"]
         currentStatus = "Now playing"
@@ -149,7 +151,8 @@ def makeSVG(data):
         "duration_ms": duration_ms,
         "progress_ms": progress_ms,
         "percentage": percentage,
-        "animation_time": animationTime
+        "animation_time": animationTime,
+        "now_playing": now_playing
     }
 
     return render_template(getTemplate(), **dataDict)
