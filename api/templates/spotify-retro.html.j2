@@ -350,7 +350,6 @@
 
                 .timeDiv {
                    width: 68px;
-                   margin-top: 2px;
                    font-size: 3px;
                    position: relative;
                    font-family: 
@@ -368,6 +367,7 @@
                    background: red;
                    position: relative;
                    background-color: #AAAAAA;
+                   margin-top: .5px;
                    box-shadow: .5px .5px 0px 0px #000000CC;
                 }
 
@@ -386,6 +386,10 @@
                    {% endif %}
                 }
 
+                .progress {
+                   position: absolute;
+                   bottom: 1px;
+                }
                 
                 div {
                     font-family: Cascadia Mono, Consolas, monospace;
@@ -427,28 +431,21 @@
                class="cover" />
           </xhtml:center>
         </xhtml:a>
-        <xhtml:div
-           class="content">
-          <xhtml:div
-             class="currentStatus">{{status}}</xhtml:div>
-          <xhtml:div
-             class="song">{{songName}}</xhtml:div>
-          <xhtml:div
-             class="artist">{{artistName}}</xhtml:div>
+        <xhtml:div class="content">
+          <xhtml:div class="currentStatus">{{status}}</xhtml:div>
+          <xhtml:div class="song">{{songName}}</xhtml:div>
+          <xhtml:div class="artist">{{artistName}}</xhtml:div>
+         <xhtml:div class="progress">
+            <xhtml:div class="timeDiv">
+               <xhtml:div class="startTime">0:00</xhtml:div>
+               <xhtml:div class="endTime">{{duration}}</xhtml:div>
+            </xhtml:div>
 
-         <xhtml:div
-               class="timeDiv">
-            <xhtml:div
-               class="startTime">0:00</xhtml:div>
-            <xhtml:div
-               class="endTime">{{duration}}</xhtml:div>
+            <xhtml:div class="progressBar">
+               <xhtml:div class="fill"></xhtml:div>
+            </xhtml:div>
          </xhtml:div>
-
-         <xhtml:div
-               class="progressBar">
-            <xhtml:div
-               class="fill"></xhtml:div>
-         </xhtml:div>
+         
         </xhtml:div>
       </xhtml:div>
     </xhtml:div>
