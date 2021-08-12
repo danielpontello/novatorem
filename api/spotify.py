@@ -135,7 +135,7 @@ def makeSVG(data):
     progress_ms = data["progress_ms"]
 
     duration_string = ms_to_string(duration_ms)
-    percentage = "{:.2f}%".format((duration_ms/progress_ms)*100)
+    percentage = "{:.2f}%".format((progress_ms/duration_ms)*100)
     animationTime = f"{(duration_ms-progress_ms)/1000}s"
 
     dataDict = {
