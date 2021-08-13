@@ -148,9 +148,9 @@ def makeSVG(data):
     for item in recentPlays['items']:
         track = item['track']
         name = track['name']
-        album = track['album']['name']
+        artist = item['artists'][0]['name']
 
-        recentList.append((name, album, image))
+        recentList.append((name, artist, image))
 
     dataDict = {
         "contentBar": contentBar,
