@@ -148,7 +148,7 @@ def makeSVG(data):
     for item in recentPlays['items']:
         track = item['track']
         name = track['name'].replace("&", "&amp;")
-        artist = track['artists'][0]['name'].replace("&", "&amp;")
+        artist = ", ".join([art['name'] for art in track['artists']]).replace("&", "&amp;")
 
         recentList.append((name, artist, image))
 
