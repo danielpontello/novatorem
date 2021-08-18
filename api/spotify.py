@@ -136,7 +136,7 @@ def makeSVG(data):
     else : 
         image = loadImageB64(item["album"]["images"][1]["url"])
 
-    artistName = item["artists"][0]["name"].replace("&", "&amp;")
+    artistName = ", ".join([art['name'] for art in item['artists']]).replace("&", "&amp;")
     songName = item["name"].replace("&", "&amp;")
 
     duration_ms = item["duration_ms"]
