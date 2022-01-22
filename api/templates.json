@@ -1,8 +1,9 @@
 {
-    "current-theme": "retro",
+    "current-theme": "ff",
     "templates": {
         "light": "spotify.html.j2",
         "dark": "spotify-dark.html.j2",
-        "retro": "spotify-retro.html.j2"
+        "retro": "spotify-retro.html.j2",
+        "ff": "spotify-ff.html.j2"
     }
 }
